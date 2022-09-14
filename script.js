@@ -2,35 +2,39 @@ var computerWins = 0;
 var playerWins = 0;
 var ties = 0;
 
-game()
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 
+const tiesCount = document.getElementById('tie');
+const winCount = document.getElementById('won');
+const lossCount = document.getElementById('lost');
+tiesCount.textContent = 0;
+winCount.textContent = 0;
+lossCount.textContent = 0;
 
-function game() {
-    var i = 1;
-    while (i <= 5) {
-        console.log("NEW GAME !!!!!!")
-        playersChoice = GetPlayerInput();
-        computerSelection =  GetComputerChoice();
-        if(playersChoice != "Rock" && playersChoice != "Paper" && playersChoice != "Scissors"){
-            alert("Please enter a valid choice!");
-        } else {
-            playRound(playersChoice, computerSelection);
-            console.log(`playerSelection is ${playersChoice}`);
-            console.log(`computerSelection is ${computerSelection}`);
-            console.log("Match number " + i);
-            console.log(`playerWins: ${playerWins}`);
-            console.log(`computerWins: ${computerWins}`);
-            console.log(`ties: ${ties}`);
-            i+=1;
-        }
+rock.addEventListener('click', function(e) {
+    if(playerWins<5 && computerWins<5) {
+        playRound('Rock'); 
     }
-}
+    CheckWinner();
+});
 
-function GetPlayerInput() {
-    playerInput = prompt("What is your weapon of choice?");
-    playerSelection = playerInput[0].toUpperCase() + playerInput.slice(1).toLowerCase();
-    return playerSelection;
-}
+
+paper.addEventListener('click', function(e) {
+    if(playerWins<5 && computerWins < 5) {
+        playRound('Paper');
+    }
+    CheckWinner();
+});
+scissors.addEventListener('click', function(e){
+    if(playerWins<5 && computerWins <5) {
+        playRound('Scissors');
+    }
+    CheckWinner();
+});
+
+
 
 function GetComputerChoice() {
     number = Math.floor(Math.random() * 3);
@@ -45,41 +49,57 @@ function GetComputerChoice() {
     }
 }
 
-function playRound(player, computer){
+function playRound(player){
+    computer = GetComputerChoice();
     if(player == computer) {
         console.log("It's a tie!");
         ties += 1;
+        tiesCount.textContent = ties;
     }
     if(player == "Rock") {
         if(computer == "Paper") {
-            console.log("You lost! Paper beats Rock!");
             computerWins += 1;
+            winCount.textContent = playerWins;
+            lossCount.textContent = computerWins;
         }
         if(computer == "Scissors") {
-            console.log("You won! Rock beats Scissors");
             playerWins += 1;
+            winCount.textContent = playerWins;
+            lossCount.textContent = computerWins;
         }
     }
     if(player == "Paper") {
         if(computer == "Rock") {
-            console.log("You won! Paper beats Rock!");
             playerWins += 1;
+            winCount.textContent = playerWins;
+            lossCount.textContent = computerWins;
         }
         if(computer == "Scissors") {
-            console.log("You lost! Scissors beat Paper");
             computerWins += 1;
+            winCount.textContent = playerWins;
+            lossCount.textContent = computerWins;
         }
     }
     if(player == "Scissors") {
         if(computer == "Rock") {
-            console.log("You lost! Rock beats Scissors");
             computerWins += 1;
+            winCount.textContent = playerWins;
+            lossCount.textContent = computerWins;
         }
         if(computer == "Paper") {
-            console.log("You won! Scissors beat Paper!");
             playerWins += 1;
+            winCount.textContent = playerWins;
+            lossCount.textContent = computerWins;
         }
     }
 };
 
+function CheckWinner() {
+    if(playerWins === 5) {
+        document.getElementById('currentStatus').textContent = 'Player has won!'
+    }
+    if(computerWins === 5) {
+        document.getElementById('currentStatus').textContent = 'Computer has won!' 
+    }
+}
 
