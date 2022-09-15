@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+game {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color:#d4070e;
+    color:white;
+    border-color:red;
+    height:150px;
+    width:150px;
+}
+
