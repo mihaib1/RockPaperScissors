@@ -2,6 +2,12 @@ var computerWins = 0;
 var playerWins = 0;
 var ties = 0;
 
+const relDiv = document.getElementById('reload');
+const reload = document.getElementById('reloadBtn');
+reload.addEventListener('click', function(e){
+    location.reload();
+})
+
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
@@ -96,10 +102,12 @@ function playRound(player){
 
 function CheckWinner() {
     if(playerWins === 5) {
-        document.getElementById('currentStatus').textContent = 'Player has won!'
+        document.getElementById('currentStatus').textContent = 'Player has won!';
+        relDiv.style.display='block'
     }
     if(computerWins === 5) {
         document.getElementById('currentStatus').textContent = 'Computer has won!' 
+        relDiv.style.display='block'
     }
 }
 

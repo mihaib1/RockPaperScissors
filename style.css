@@ -3,6 +3,17 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap:8px;
+    background-color: #222831;
+}
+
+.title {
+    display:flex;
+    color:#FAC650;
+    justify-content: center;
+    background-color: #111720;
+    width:100rem;
+    margin-bottom:36px;
 }
 
 game {
@@ -11,22 +22,36 @@ game {
     align-items: center;
 }
 
-.buttons {
-
-}
 
 #results {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color:#FAC650;
+    margin-top:24px;
 }
 
 button {
-    background-color:#d4070e;
+    background-color:#222831;
     color:white;
-    border-color:red;
     height:150px;
     width:150px;
+    font-size:48px;
+    border-radius: 8px;
+    border-color:#111720
 }
 
+#currentStatus {
+    color:#FAC650;
+    display: flex;
+    justify-content: center;
+    margin-top:16px;
+    font-size:large;
+}
+
+#reloadBtn {
+    color: #FAC650;
+    margin-top:28px;
+    width:300px;
+}
